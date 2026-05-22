@@ -28,7 +28,7 @@ export default function sembleExtension(pi: ExtensionAPI) {
     promptSnippet:
       "Tool routing: use semble_search before rg/find/file listing for behavior discovery; use AST/LSP for structure.",
     promptGuidelines: [
-      "For behavior/intent discovery, start with semble_search, not rg/find/file listing; use AST/LSP for structural calls/imports/exports.",
+      "For behavior/intent discovery, start with semble_search, not rg/find/file listing; use AST/LSP for syntax-shaped calls/imports/exports.",
       "Use rg for exact literal verification after discovery, or when the user asks for exact text.",
     ],
     parameters: Type.Object({
