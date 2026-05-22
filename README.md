@@ -1,4 +1,4 @@
-# pi-semble
+# pi-semble-lite
 
 A [pi](https://pi.dev) extension that adds [Semble](https://github.com/MinishLab/semble) semantic code search as first-class tools, without MCP and without large prompt snippets.
 
@@ -23,11 +23,11 @@ Clone this repo, then add it to `~/.pi/agent/settings.json`:
 
 ```json
 {
-  "extensions": ["/absolute/path/to/pi-semble"]
+  "extensions": ["/absolute/path/to/pi-semble-lite"]
 }
 ```
 
-Or copy/symlink `index.ts` into `~/.pi/agent/extensions/pi-semble.ts`.
+Or copy/symlink `index.ts` into `~/.pi/agent/extensions/pi-semble-lite.ts`.
 
 Run `/reload` in pi after installing.
 

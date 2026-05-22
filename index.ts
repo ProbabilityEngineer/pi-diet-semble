@@ -25,13 +25,11 @@ export default function sembleExtension(pi: ExtensionAPI) {
     name: "semble_search",
     label: "Semble Search",
     description:
-      "Search a codebase semantically with Semble. Good for behavior, concepts, and symbols before broad grep/read exploration.",
+      "Search a codebase semantically with Semble for behavior/concept discovery.",
     promptSnippet:
-      "Search code semantically with semble_search before broad grep/read exploration.",
+      "Tool routing: use semble_search for behavior/concept discovery when exact symbols/files are unknown.",
     promptGuidelines: [
-      "Use semble_search to find relevant code by behavior, concept, or symbol before reading whole files.",
-      "Use semble_search before grep for exploratory code discovery; use grep when exhaustive literal matching is needed.",
-      "Use semble_related with a promising semble_search result's file path and line to discover related implementations.",
+      "Use semble_search for exploratory behavior/concept discovery; use LSP for known symbols, AST for structural patterns, and grep for exact literals.",
     ],
     parameters: Type.Object({
       query: Type.String({
@@ -76,9 +74,9 @@ export default function sembleExtension(pi: ExtensionAPI) {
     description:
       "Find code semantically related to a known file and line using Semble find-related.",
     promptSnippet:
-      "Find semantically related code from a known location with semble_related.",
+      "Use semble_related as a follow-up from a promising Semble result.",
     promptGuidelines: [
-      "Use semble_related after semble_search when one result looks relevant and nearby related code may exist elsewhere.",
+      "Use semble_related after semble_search to find code related to a known file/line.",
     ],
     parameters: Type.Object({
       filePath: Type.String({ description: "File path from a prior Semble result." }),

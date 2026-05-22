@@ -1,5 +1,5 @@
 {
-  "name": "pi-semble",
+  "name": "pi-semble-lite",
   "version": "0.1.0",
   "description": "Semble code search extension for pi coding agent",
   "type": "module",
