@@ -1,5 +1,4 @@
 import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
-import { StringEnum } from "@earendil-works/pi-ai";
 import { Type } from "typebox";
 
 type ExecResult = {
@@ -27,10 +26,10 @@ export default function sembleExtension(pi: ExtensionAPI) {
     description:
       "Search a codebase semantically with Semble for behavior/concept discovery.",
     promptSnippet:
-      "Tool routing: use semble_search first for behavior/concept discovery when exact symbols/files are unknown.",
+      "Tool routing: use semble_search for conceptual behavior discovery; use AST/LSP for structure or known symbols.",
     promptGuidelines: [
-      "Use semble_search as the first search tool for exploratory behavior/concept discovery when exact files/symbols are unknown.",
-      "Use LSP for known symbols, AST for structural patterns, and grep for exact literals.",
+      "Use semble_search for exploratory behavior discovery, not structural calls/imports/exports; use AST or LSP for those.",
+      "Use grep for exact literal text.",
     ],
     parameters: Type.Object({
       query: Type.String({
@@ -46,16 +45,16 @@ export default function sembleExtension(pi: ExtensionAPI) {
           description: "Maximum number of results to return.",
         }),
       ),
-      content: Type.Optional(
-        StringEnum(["code", "docs", "config", "all"] as const, {
-          description: "Content type to search. Defaults to Semble's code search.",
+      includeTextFiles: Type.Optional(
+        Type.Boolean({
+          description: "Also index non-code text files such as Markdown, YAML, and JSON.",
         }),
       ),
     }),
     async execute(_toolCallId, params, signal, _onUpdate, ctx) {
       const args = ["search", params.query, normalizePath(params.path, ctx.cwd)];
       if (params.topK !== undefined) args.push("--top-k", String(params.topK));
-      if (params.content !== undefined) args.push("--content", params.content);
+      if (params.includeTextFiles) args.push("--include-text-files");
 
       const result = (await pi.exec("semble", args, {
         cwd: ctx.cwd,
@@ -90,6 +89,11 @@ export default function sembleExtension(pi: ExtensionAPI) {
       topK: Type.Optional(
         Type.Number({ description: "Maximum number of related results to return." }),
       ),
+      includeTextFiles: Type.Optional(
+        Type.Boolean({
+          description: "Also index non-code text files such as Markdown, YAML, and JSON.",
+        }),
+      ),
     }),
     async execute(_toolCallId, params, signal, _onUpdate, ctx) {
       const args = [
@@ -99,6 +103,7 @@ export default function sembleExtension(pi: ExtensionAPI) {
         normalizePath(params.path, ctx.cwd),
       ];
       if (params.topK !== undefined) args.push("--top-k", String(params.topK));
+      if (params.includeTextFiles) args.push("--include-text-files");
 
       const result = (await pi.exec("semble", args, {
         cwd: ctx.cwd,

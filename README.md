@@ -7,6 +7,8 @@ A [pi](https://pi.dev) extension that adds [Semble](https://github.com/MinishLab
 - `semble_search` — natural-language, symbol, or identifier code search.
 - `semble_related` — find code related to a known file and line.
 
+Both tools support `includeTextFiles: true` to pass Semble's `--include-text-files` flag for Markdown, YAML, JSON, and other non-code text files.
+
 ## Requirements
 
 Install the Semble CLI so `semble` is on your `PATH`:
@@ -45,7 +47,7 @@ Ask pi questions like:
 - "Search for the save model implementation."
 - "Find code related to `src/auth.ts` line 42."
 
-The extension nudges the model to use Semble for exploratory discovery and reserve literal grep for exhaustive exact matches.
+The extension nudges the model to use Semble for exploratory behavior discovery, AST/LSP for structural code or known symbols, and grep for exact literal text.
 
 ## Development
 
