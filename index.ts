@@ -27,9 +27,10 @@ export default function sembleExtension(pi: ExtensionAPI) {
     description:
       "Search a codebase semantically with Semble for behavior/concept discovery.",
     promptSnippet:
-      "Tool routing: use semble_search for behavior/concept discovery when exact symbols/files are unknown.",
+      "Tool routing: use semble_search first for behavior/concept discovery when exact symbols/files are unknown.",
     promptGuidelines: [
-      "Use semble_search for exploratory behavior/concept discovery; use LSP for known symbols, AST for structural patterns, and grep for exact literals.",
+      "Use semble_search as the first search tool for exploratory behavior/concept discovery when exact files/symbols are unknown.",
+      "Use LSP for known symbols, AST for structural patterns, and grep for exact literals.",
     ],
     parameters: Type.Object({
       query: Type.String({
