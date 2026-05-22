@@ -26,10 +26,10 @@ export default function sembleExtension(pi: ExtensionAPI) {
     description:
       "Search a codebase semantically with Semble for behavior/concept discovery.",
     promptSnippet:
-      "Tool routing: use semble_search before rg/find/scripts for conceptual behavior discovery; use AST/LSP for structure.",
+      "Tool routing: use semble_search before rg/find/file listing for behavior discovery; use AST/LSP for structure.",
     promptGuidelines: [
-      "Use semble_search for behavior/intent discovery; do not start with rg/find/scripts unless the user asks for exact text or file listing.",
-      "Use AST/LSP for structural calls/imports/exports or known symbols; use rg for exact literal verification.",
+      "For behavior/intent discovery, start with semble_search, not rg/find/file listing; use AST/LSP for structural calls/imports/exports.",
+      "Use rg for exact literal verification after discovery, or when the user asks for exact text.",
     ],
     parameters: Type.Object({
       query: Type.String({
