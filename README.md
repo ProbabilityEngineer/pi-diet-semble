@@ -19,7 +19,13 @@ uv tool install semble
 
 ## Install for pi
 
-Clone this repo, then add it to `~/.pi/agent/settings.json`:
+Install from GitHub:
+
+```bash
+pi install git:github.com/ProbabilityEngineer/pi-semble-lite
+```
+
+Or clone this repo, then add it to `~/.pi/agent/settings.json`:
 
 ```json
 {
