@@ -1,4 +1,4 @@
-# pi-semble-lite
+# pi-diet-semble
 
 A [pi](https://pi.dev) extension that adds [Semble](https://github.com/MinishLab/semble) semantic code search as first-class tools, without MCP and without large prompt snippets.
 
@@ -24,18 +24,18 @@ uv tool install semble
 Install from GitHub:
 
 ```bash
-pi install git:github.com/ProbabilityEngineer/pi-semble-lite
+pi install git:github.com/ProbabilityEngineer/pi-diet-semble
 ```
 
 Or clone this repo, then add it to `~/.pi/agent/settings.json`:
 
 ```json
 {
-  "extensions": ["/absolute/path/to/pi-semble-lite"]
+  "extensions": ["/absolute/path/to/pi-diet-semble"]
 }
 ```
 
-Or copy/symlink `index.ts` into `~/.pi/agent/extensions/pi-semble-lite.ts`.
+Or copy/symlink `index.ts` into `~/.pi/agent/extensions/pi-diet-semble.ts`.
 
 Run `/reload` in pi after installing.
 
