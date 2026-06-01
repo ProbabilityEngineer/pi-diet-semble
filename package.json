@@ -1,35 +1,45 @@
 {
   "name": "pi-diet-semble",
   "version": "0.1.0",
-  "description": "Semble code search extension for pi coding agent",
+  "description": "On-demand Semble semantic code search tools for Pi.",
   "type": "module",
   "main": "index.ts",
   "exports": {
     ".": "./index.ts"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ProbabilityEngineer/pi-diet-semble.git"
+  },
+  "homepage": "https://github.com/ProbabilityEngineer/pi-diet-semble#readme",
+  "bugs": {
+    "url": "https://github.com/ProbabilityEngineer/pi-diet-semble/issues"
+  },
   "files": [
     "index.ts",
     "README.md",
-    "LICENSE"
+    "LICENSE",
+    "tsconfig.json"
   ],
   "keywords": [
+    "pi-package",
+    "pi-extension",
     "pi",
-    "pi-coding-agent",
-    "extension",
     "semble",
+    "semantic-search",
     "code-search"
   ],
   "license": "MIT",
   "peerDependencies": {
-    "@earendil-works/pi-coding-agent": "*"
-  },
-  "dependencies": {
+    "@earendil-works/pi-coding-agent": "*",
     "@earendil-works/pi-ai": "*",
     "typebox": "*"
   },
   "devDependencies": {
     "@earendil-works/pi-coding-agent": "*",
-    "typescript": "^5.9.0"
+    "@earendil-works/pi-ai": "*",
+    "typescript": "^5.9.0",
+    "typebox": "*"
   },
   "scripts": {
     "typecheck": "tsc --noEmit"
