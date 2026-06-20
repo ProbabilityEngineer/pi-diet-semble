@@ -1,5 +1,7 @@
 # pi-diet-semble
 
+> One of my diet context engineering and workflow extensions. Add pi-diet-LSP, pi-diet-Ripgrep, pi-repo-move and others from [npm](https://www.npmjs.com/~probabilityengineer).
+
 On-demand Semble semantic code search tools for Pi.
 
 `pi-diet-semble` gives Pi agents compact, model-visible tools for exploratory code discovery with [Semble](https://github.com/MinishLab/semble). It is designed for behavior and intent searches — finding where authentication, persistence, rendering, or other concepts are implemented — without MCP, automatic scans, or large prompt snippets.
