@@ -4,3 +4,11 @@ dist/
 .DS_Store
 .env
 .turnlog/
+
+# Local agent, task, provenance, VCS, and build state
+.pi/
+.tickets/
+.turnlog/
+.jj/
+.clu/data.sqlite
+.build/
