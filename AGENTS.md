@@ -1,44 +1,16 @@
 # Agent Instructions
 
-## Workflow
+## Repository
 
-- Start with the most specific code-intelligence tool for the request, then use explicit repo-relative paths for follow-up reads, searches, and edits; if the repo seems wrong, stop and ask.
-- For syntax-shaped requests, start with AST/LSP before semantic search.
-- For behavior or intent requests, start with Semble before file listing or literal search.
-- Use diagnostics before broad builds when an LSP is available.
+- `pi-diet-semble` is a TypeScript Pi extension exposing on-demand Semble semantic code-search tools.
+- Keep semantic search focused on behavior and intent discovery, not exhaustive syntax matching or resolved symbol navigation; preserve compact results and explicit invocation.
+- The extension entry point is `index.ts`.
 
-## Structural edits
+## Validation
 
-- Prefer ast-grep for simple structural replacements.
-- Use precise text edits for complex multi-line changes.
+- Run `npm run typecheck` after implementation changes.
+- Live semantic-search checks require the Semble CLI. Run them only when it is installed and configured; otherwise report that live checks were not run. Typechecking does not require that CLI or other Pi extensions.
 
-## Tickets
+## Version control
 
-- Use tk tickets for non-trivial feature/fix work.
-- Avoid ticket overhead for tiny direct tasks.
-- Ticket actions may modify `.tickets/` but should not touch code unless the task requires it.
-
-## Shell
-
-- Prefer explicit paths for file operations.
-- Avoid interactive prompts in automation.
-- Prefer non-interactive flags such as `cp -f`, `mv -f`, `scp -o BatchMode=yes`, `ssh -o BatchMode=yes`, and `apt-get -y`.
-- Ask before deleting files or directories.
-- Set `HOMEBREW_NO_AUTO_UPDATE=1` for Homebrew commands.
-
-## Jujutsu and Git
-
-- Use jj for local VCS operations: `jj status`, `jj diff`, `jj log`, `jj describe -m "message"`, `jj new --no-edit`, `jj op log`, and `jj undo`.
-- Use Git only for remote interoperability.
-- Do not use Git staged-index workflows: no `git add`, `git commit`, `git diff --cached`, or `git pull --rebase`.
-- Before starting, inspect `jj status`; dirty state is pre-existing user work unless explicitly told to continue it.
-- After completing coherent agent-owned work, run `jj describe -m "message"` and `jj new --no-edit`.
-- Desired final publish shape: `@` is empty; `@-` is the completed change; `main`, `main@git`, and `main@origin` point to `@-`; Git HEAD is attached to `main`; `git status --short --branch` is clean and shows `## main...origin/main`.
-- Before declaring work pushed or clean, verify bookmark/branch alignment; a clean jj working copy is not enough.
-- If `jj new --no-edit` creates an empty child but leaves `@` on the completed change, switch to the empty child with `jj edit <empty-child>` before moving `main`.
-- For off-machine backup or publishing, prefer `/jj-align-push [branch]` after `@` is empty and `@-` is the completed change.
-
-## Turnlog
-
-- When you attempt to use turnlog for meaningful repository work and the target repo is not initialized, initialize it rather than abandoning the record.
-- Keep `.turnlog/` out of GitHub by default unless the repo explicitly opts into tracking it.
+- Use normal Git workflows. Inspect `git status` and the diff before committing or pushing.

@@ -6,7 +6,7 @@ On-demand Semble semantic code search tools for Pi.
 
 `pi-diet-semble` gives Pi agents compact, model-visible tools for exploratory code discovery with [Semble](https://github.com/MinishLab/semble). It is designed for behavior and intent searches — finding where authentication, persistence, rendering, or other concepts are implemented — without MCP, automatic scans, or large prompt snippets.
 
-Use it alongside structural tools: Semble for behavior discovery, AST tools for syntax-shaped searches, LSP tools for known symbols and types, and grep for exact literals.
+Use Semble first for behavior, intent, or conceptual discovery when the relevant symbol or file is unknown. Results are discovery candidates, not exhaustive exact-text matches, syntax matches, or resolved symbol references.
 
 ## Tools
 
@@ -59,7 +59,7 @@ Ask Pi questions like:
 - "Search for the save model implementation."
 - "Find code related to `src/auth.ts` line 42."
 
-The extension nudges agents to use Semble for exploratory behavior discovery, AST/LSP for structural code or known symbols, and grep for exact literal text.
+The extension nudges agents to describe the desired behavior in natural language and inspect candidate source locations to verify relevance before drawing conclusions or editing. Its guidance does not assume other extensions are installed.
 
 ## Prompt overhead
 
